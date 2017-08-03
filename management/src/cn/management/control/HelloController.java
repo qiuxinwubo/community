@@ -13,7 +13,7 @@ public class HelloController {
 	public @ResponseBody String test() {
         return "hello, world! This com from spring!";
     }
-	@RequestMapping("/freemaker")
+	@RequestMapping("/freemarker")
 	public String freemaker() {
 		return "/shiyan/shiyan";
 	}

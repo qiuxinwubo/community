@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>йсф╣╩╔а╙╩╔м╗о╣мЁ  ╡ывВЁи╧╕</title>
+<title>Х╖├И╒▒Д╨▓Х│■Д╨▓И─ ГЁ╩Г╩÷  Ф⌠█Д╫°Ф┬░Е┼÷</title>
 <script src="${base}/common/js/jquery.min.js"></script>
 <script src="${base}/common/artdialog/artDialog.js?skin=opera"></script>
 <script type="text/javascript" src="${base}/common/artdialog/plugins/iframeTools.js"></script>
