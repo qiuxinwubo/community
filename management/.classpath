@@ -77,5 +77,17 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-4.1.0.RELEASE-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-4.1.0.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/freemarker.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/hibernate-commons-annotations-4.0.2.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/hibernate-core-4.2.21.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/c3p0-0.9.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/c3p0-oracle-thin-extras-0.9.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/mchange-commons-java-0.2.3.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
