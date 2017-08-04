@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>cast_detail</code>
+	<url>/cast/cast_detail</url>
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<type>1</type>
+			<scope>4</scope>
+			<sql>
+			<![CDATA[
+			select * 
+			from vms_cast_info t 
+			where t.if_del='1' ${1}
+			]]>
+			</sql>
+			
+			<sqlparts>
+				<sqlpart>
+					<part>${1}</part>
+					<type>1</type>
+					<arg>vid</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.id = ? </value>
+						</option>
+					</options>
+				</sqlpart>
+			</sqlparts>
+			<vars>	
+				<var>
+					<argName>vid</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+			</vars>
+			<transcodes>
+				<transcode>
+					<code>service_type</code>
+					<type>2</type>
+					<transcode>select service_type_name from vms_dic_service_type  where service_type_code='$service_type$'</transcode>
+				</transcode>
+			</transcodes>
+		</dataset>
+		<dataset>
+			<name>ds2</name>
+			<type>1</type>
+			<scope>4</scope>
+			<sql>
+			<![CDATA[
+			select * from vms_files t where 1=1 ${1}
+			]]>
+			</sql>
+			<sqlparts>
+				<sqlpart>
+					<part>${1}</part>
+					<type>1</type>
+					<arg>vid</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.video_id = ? </value>
+						</option>
+					</options>
+				</sqlpart>
+			</sqlparts>
+			<vars>	
+				<var>
+					<argName>vid</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+			</vars>
+		</dataset>
+		<dataset>
+			<name>ds3</name>
+			<type>1</type>
+			<scope>4</scope>
+			<sql>
+			<![CDATA[
+			select * from VMS_CAST_TAGS t where 1=1 ${1} order by t.TAGS_CODE
+			]]>
+			</sql>
+			
+			<sqlparts>
+				<sqlpart>
+					<part>${1}</part>
+					<type>1</type>
+					<arg>vid</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.CAST_ID = ? </value>
+						</option>
+					</options>
+				</sqlpart>
+			</sqlparts>
+			<vars>	
+				<var>
+					<argName>vid</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+			</vars>
+			<transcodes>
+				<transcode>
+					<code>TAGS_CODE</code>
+					<type>2</type>
+					<transcode>select TAGS_NAME from VMS_DIC_TAGS  where TAGS_CODE='$TAGS_CODE$'</transcode>
+				</transcode>
+			</transcodes>
+		</dataset>
+	</datasets>
+</webpage>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web_app>
+	<appname>vms</appname><!-- 应用编号（必须唯一） -->
+	
+	<!-- 登陆地址 role=no的情况下，禁止访问 时 跳转至登陆页 
+	    ${currenturl}为当前访问地址 
+	    ${defaultauthorityfilter}为 默认提供的一个过滤controller(只进行跳转之后的currenturl)，需在web.xml中配置
+	-->
+	<!-- service返回的地址必须保证能被过滤 且为session  设置 authusercode-->
+	<loginurl><![CDATA[http://localhost:8080/vms/index.action]]></loginurl>
+	<!-- 默认过滤拦截，若使用 需在web-xml中配置 -->
+	<defaultauthorityfilter><![CDATA[http://localhost:8080/vms/authorityback.action?fulongtoolkitreurl=]]></defaultauthorityfilter>
+	<error>500.jsp</error><!-- 错误页面 role!=no的情况下，禁止访问 
+		时 跳转至错误页 -->
+	<session>authusercode</session><!-- 存放用户信息所属角色代码的session key,此值需保存在session中且为字符串 -->
+	<regexp>1</regexp><!-- 是否开启正则表达式匹配 1：开启，0：不开启  -->
+	<auth>
+		<roles>
+			<code>1</code><!-- 角色代码 -->
+			<forbid><!-- 禁止访问 --><!-- 优先判断禁止的条件 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query>list_all_requirment</query><!-- code -->
+				</querys>
+				<actions>
+					<action></action><!-- url -->
+				</actions>
+			</forbid>
+			<allow><!-- 允许访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action>
+				</actions>
+			</allow>
+			<other>1</other><!-- 未配置的拦截：1：允许，0：禁止 （若forbid和allow中都未找到所配置的条件，则选择默认情况） -->
+		</roles>
+		<roles>
+			<code>2</code><!-- 角色代码 -->
+			<forbid><!-- 禁止访问 --><!-- 优先判断禁止的条件 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action><!-- url -->
+				</actions>
+			</forbid>
+			<allow><!-- 允许访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action>
+				</actions>
+			</allow>
+			<other>1</other><!-- 未配置的拦截：1：允许，0：禁止 （若forbid和allow中都未找到所配置的条件，则选择默认情况） -->
+		</roles>
+		<roles>
+			<code>3</code><!-- 角色代码 -->
+			<forbid><!-- 禁止访问 --><!-- 优先判断禁止的条件 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action><!-- url -->
+				</actions>
+			</forbid>
+			<allow><!-- 允许访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action>
+				</actions>
+			</allow>
+			<other>1</other><!-- 未配置的拦截：1：允许，0：禁止 （若forbid和allow中都未找到所配置的条件，则选择默认情况） -->
+		</roles>
+		<roles>
+			<code>4</code><!-- 角色代码 -->
+			<forbid><!-- 禁止访问 --><!-- 优先判断禁止的条件 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action><!-- url -->
+				</actions>
+			</forbid>
+			<allow><!-- 允许访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action>
+				</actions>
+			</allow>
+			<other>1</other><!-- 未配置的拦截：1：允许，0：禁止 （若forbid和allow中都未找到所配置的条件，则选择默认情况） -->
+		</roles>
+		<roles>
+			<code>13</code><!-- 角色代码 -->
+			<forbid><!-- 禁止访问 --><!-- 优先判断禁止的条件 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query>list_all_requirment</query><!-- code -->
+				</querys>
+				<actions>
+					<action></action><!-- url -->
+				</actions>
+			</forbid>
+			<allow><!-- 允许访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query><!-- code -->
+				</querys>
+				<actions>
+					<action></action>
+				</actions>
+			</allow>
+			<other>1</other><!-- 未配置的拦截：1：允许，0：禁止 （若forbid和allow中都未找到所配置的条件，则选择默认情况） -->
+		</roles>
+		<roles>
+			<code>no</code><!-- 表示需要没有用户角色，普通浏览者 -->
+			<forbid><!-- 禁止访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query></query>
+				</querys>
+				<actions>
+					<action></action>
+				</actions>
+			</forbid>
+			<allow><!-- 允许访问 -->
+				<querys><!-- 框架配置文件中的code，需区分大小写 -->
+					<query>safe2</query>
+					<query>web_org</query>
+					<query>web_org_detail</query>
+					<query>product_list</query>
+					<query>product_detail</query>
+					<query>zxcp</query>
+					<query>sy_jinrong</query>
+					<query>sy_ss</query>
+					<query>sy_dl</query>
+					<query>sy_tb</query>
+					<query>sy_xqsz</query>
+					<query>sy_jg</query>
+					<query>web_org_int_detail</query>
+					
+				</querys>
+				<actions>
+					<action>/authorityback</action>
+					<action>/index</action>
+					<action>/login</action>
+					<action>/reg</action>
+					<action>/regEnt</action>
+					<action>/saveRegEnt</action>
+					<action>/regOrg</action>
+					<action>/saveRegOrg</action>
+					<action>/regInt</action>
+					<action>/saveRegInt</action>
+					<action>/sendEmail</action>
+					<action>/checkName</action>
+					<action>/checkOrgName</action>
+					<action>/checkEmail</action>
+					<action>/check</action>
+					<action>/category</action>
+					<action>/categoryArea</action>
+					<action>/service</action>
+					<action>/findPsaaword</action>
+					<action>/activateEmail</action>
+					<action>/favorite_product</action>
+				</actions>
+			</allow>
+			<other>0</other><!-- 未配置的拦截：1：允许，0：禁止 -->
+		</roles>
+	</auth>
+</web_app>

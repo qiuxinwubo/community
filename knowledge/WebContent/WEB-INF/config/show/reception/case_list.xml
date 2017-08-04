@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>case_list</code>
+	<url>/reception/case_list</url>
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<type>1</type>
+			<scope>4</scope>
+			<sql>
+			<![CDATA[
+				select * from IP_INTELLECTUAL_PROPERTY t where t.if_del='0' and t.state='3'
+			]]>
+			</sql>
+		</dataset>
+	</datasets>
+</webpage>

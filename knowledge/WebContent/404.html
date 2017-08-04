@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link type="text/css"  rel="stylesheet" href="/style/www/css/index.css">
+	<link type="text/css"  rel="stylesheet" href="/style/www/css/cart.css">
+	<script type="text/javascript" src="/style/www/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/style/www/js/cart-nogoods.js"></script>
+	<script type="text/javascript" src="/style/www/js/index.js"></script>
+	<title>易料通</title>
+</head>
+<script>
+	$(function(){ 
+		
+		//购物车数量
+		$.ajax({
+	        type: "post",
+	        url: "/www/purchaseInfo/carNum.action",
+	        data: {},
+	        dataType: "text",
+	        success: function(data){
+	        	$("#carNum").html(data);
+	        }
+	    });	
+		
+		//头部
+		$.ajax({
+			url : "/www/show.action?code=common_top",
+			type : 'POST',
+			success : function(data) {
+				$("#top").html(data);
+			}
+		});
+		
+		//底部
+		$.ajax({
+			url :"/www/show.action?code=common_bottom",
+			type : "POST",
+			success : function(data){
+				$("#under").html(data);
+			}
+		});
+	})
+	//搜索框
+	function emcSearch(){
+		var keyword = encodeURIComponent($("#keyword").val());
+		var url = "/list.html";
+		if(keyword != null && keyword !=''){
+			url=url+"?keyword="+keyword;	
+		}
+		window.location.href=url;
+	}
+	//搜索框
+	function emcSearchIndex(v){
+		var keyword = encodeURIComponent(v);
+		var url = "/list.html";
+		if(keyword != null && keyword !=''){
+			url=url+"?keyword="+keyword;	
+		}
+		window.location.href=url;
+	}
+</script>
+<body>
+<div class="head">
+		
+	<div class="titlebg" id="top"></div>
+	<!-- 头部结束-->
+	<div class="search">
+		<!-- logo -->
+		<div class="logo">
+			<a href="javascript:void(0)"></a>
+		</div>
+		<!-- 搜索框 -->
+		<div class="form">
+			<form id="fm" action="list.html" method="get">
+			<input type="text" placeholder="输入关键词进行搜索" id="keyword" value="">
+				<input type="button" value="搜索" onclick="emcSearch();">
+			</form>
+		</div>
+		<!-- 购物车 -->
+		<div class="shoppingcar">
+			<a href="/www/purchaseInfo/list.action" target="_blank">我的购物车 <span></span></a>
+			<i id="carNum">0</i>
+		</div>
+	</div>
+	<!--头部导航结束 -->
+
+	<div class="wn-shopcar">
+		<div class="wn-content">
+			<h3>您访问的页面已经不存在</h3>
+			<div class="wn-btn">
+				<a href="/" class="back">返回首页</a>
+				<a href="javascript:void(0)" class="login"></a>
+			</div>			
+		</div>		
+	</div>
+	
+		
+	<!-- 页面底部 -->
+	<div id="under"></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>ba_leave_word_list</code>
+	<url>/backstage/ba_leave_word_list</url>
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<type>1</type>
+			<scope>3</scope>
+			<pageSize>10</pageSize>
+			<pageNoArg>pageNo</pageNoArg>
+			<sql>
+			<![CDATA[
+				select t.*,k.phone,k.user_name 
+				from IP_LEAVE_WORDS t,IP_SYS_USER K 
+				where t.create_id=k.id and t.if_del='0'order by t.create_time desc
+			]]>
+			</sql>
+		</dataset>
+	</datasets>
+</webpage>

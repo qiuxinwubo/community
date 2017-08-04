@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>favourite</code>
+	<url>/homepage/favourite</url>
+	<!--热门视频-->
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<!-- 1SQL检索，2存储过程，3Text文件，4Xml文件，5Rolap,6 solr,7json文件 -->
+			<type>1</type>
+			<!-- 1单条，2前几条，3分页显示，4全部 -->
+			<scope>3</scope>
+			<pageSize>8</pageSize>
+			<pageNoArg>pageNo</pageNoArg>
+			<sql><![CDATA[
+				select t.id,t.name,nvl(t.collect_count,0) as collect_count,nvl(t.watch_count,0) as watch_count,
+       					vc.create_time,vc.user_id,vci.if_shelves,nvl(vci.serial_number,10000000) as serial_number,vci.cover
+					from 
+				vms_collect vc, vms_cast_info vci,v_vms_video_countprop t  
+				where vc.video_id = vci.id and vci.id = t.id and vci.if_shelves='1' and  vci.if_del='1' and vc.user_id='$user.id$' 
+					order by vc.create_time desc
+			]]></sql>
+		</dataset>
+		
+	</datasets>
+</webpage>

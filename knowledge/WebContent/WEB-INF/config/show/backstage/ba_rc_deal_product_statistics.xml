@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>ba_rc_deal_product_statistics</code>
+	<url>/backstage/ba_rc_deal_product_statistics</url>
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<type>1</type>
+			<scope>3</scope>
+			<pageSize>10</pageSize>
+			<pageNoArg>pageNo</pageNoArg>
+			<sql>
+			<![CDATA[
+				select t.*
+				from IP_RC_DEAL_PRODUCT_STATISTICS t
+				where 1=1 ${1}
+				order by name
+			]]>
+			</sql>
+			<sqlparts>
+				<sqlpart>
+					<part>${1}</part>
+					<type>1</type>
+					<arg>id</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.pid = ? </value>
+						</option>
+					</options>
+				</sqlpart>
+			</sqlparts>
+			<vars>	
+				<var>
+					<argName>id</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+			</vars>
+		</dataset>
+	</datasets>
+</webpage>

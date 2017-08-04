@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>manageMeeting</code>
+	<url>/live/manageMeeting</url>
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<type>1</type>
+			<scope>3</scope>
+			<pageSize>10</pageSize>
+			<pageNoArg>pageNo</pageNoArg>
+			<sql>
+			<![CDATA[
+                   select * from (select V.* ,(select count(*)  FROM VMS_MEETING_ATTENDEE s where s.video_id=v.id  ) as cou,（case when end_time - sysdate>0 then '未结束' else '已结束'end) as if_finish  from VMS_LIVE_INFO V where  OPENDED='false' and if_del='1' and IF_STATUS > '0') where 1=1  ${1} ${2} ${3} ${4} ${5} ${6}  order by IF_FINISH,IF_STATUS ASC,CREATE_TIME
+			]]>
+			</sql>	
+	   <sqlparts>
+				<sqlpart>
+					<part>${1}</part>
+					<type>1</type>
+					<arg>subject</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and v.subject like ? </value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${2}</part>
+					<type>1</type>
+					<arg>startTimeStart</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and V.START_TIME &gt;=to_date(?,'YYYY-MM-DD hh24:mi:ss')</value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${3}</part>
+					<type>1</type>
+					<arg>startTimeEnd</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and V.END_TIME &lt;=to_date(?,'YYYY-MM-DD hh24:mi:ss')</value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${4}</part>
+					<type>1</type>
+					<arg>loginName</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and v.CREATE_USER_NAME like ? </value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${5}</part>
+					<type>1</type>
+					<arg>ifStatus</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and v.IF_STATUS = ? </value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${6}</part>
+					<type>1</type>
+					<arg>ifFinish</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and if_finish = ? </value>
+						</option>
+					</options>
+				</sqlpart>
+			</sqlparts>
+			<vars>	
+				<var>
+					<argName>subject</argName>
+					<type>1</type>
+					<prefix>%</prefix>
+					<suffix>%</suffix>
+				</var>
+				<var>
+					<argName>startTimeStart</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+					<var>
+					<argName>startTimeEnd</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+				<var>
+					<argName>loginName</argName>
+					<type>1</type>
+					<prefix>%</prefix>
+					<suffix>%</suffix>
+				</var>
+				<var>
+					<argName>ifStatus</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+				<var>
+					<argName>ifFinish</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+			</vars>
+		</dataset>
+	</datasets>
+</webpage>

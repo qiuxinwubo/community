@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>record</code>
+	<url>/homepage/record</url>
+	<!--热门视频 -->
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<!-- 1SQL检索，2存储过程，3Text文件，4Xml文件，5Rolap,6 solr,7json文件 -->
+			<type>1</type>
+			<!-- 1单条，2前几条，3分页显示，4全部 -->
+			<scope>3</scope>
+			<pageSize>5</pageSize>
+			<pageNoArg>pageNo</pageNoArg>
+			<sql><![CDATA[
+				select vv.id,vv.name,vv.service_type,vv.cover,nvl(vv.watch_count,0) as watch_count,nvl(vv.collect_count,0) as collect_count,
+						vw.last_watch_time,nvl(vc.serial_number,10000000)as serial_number,vc.if_shelves
+       				from 
+				(select user_id,video_id,max(create_time) as last_watch_time from vms_watched where video_type = 2  and user_id = '$user.id$' group by user_id,video_id) vw,V_VMS_VIDEO_COUNTPROP vv,vms_cast_info vc
+					where vw.video_id = vv.id and vv.id=vc.id and vc.if_shelves='1' 
+				order by vw.last_watch_time desc,watch_count desc,collect_count desc
+			]]>
+			</sql>
+			<transcodes>
+				<transcode>
+					<code>SERVICE_TYPE</code>
+					<type>2</type>
+					<transcode> select service_type_name from vms_dic_service_type where service_type_code= '$SERVICE_TYPE$'</transcode>
+				</transcode>
+			</transcodes>	
+		</dataset>
+	</datasets>
+</webpage>

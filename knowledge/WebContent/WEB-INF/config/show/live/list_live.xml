@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>list_live</code>
+	<url>/live/list_live</url>
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<type>1</type>
+			<scope>3</scope>
+			<pageSize>10</pageSize>
+			<pageNoArg>pageNo</pageNoArg>
+			<sql>
+			<![CDATA[select t.*
+			from VMS_LIVE_INFO t where 1=1 and if_del='1' and opended='true' and create_user='$user.id$' 
+			${1} ${2} ${3} order by t.if_status,t.serial_number,t.create_time desc]]>
+			</sql>
+			<sqlparts>
+			
+				<sqlpart>
+					<part>${1}</part>
+					<type>1</type>
+					<arg>subject</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.subject like ? </value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${2}</part>
+					<type>1</type>
+					<arg>createTime</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.create_time &gt;  to_date(?,'yyyy-mm-dd')</value>
+						</option>
+					</options>
+				</sqlpart>
+				<sqlpart>
+					<part>${3}</part>
+					<type>1</type>
+					<arg>createTime1</arg>
+					<defaultValue></defaultValue>
+					<options>
+						<option>
+							<code>null</code>
+							<value></value>
+						</option>
+						<option>
+							<code>not null</code>
+							<value> and t.create_time &lt;=  to_date(?,'yyyy-mm-dd hh24:mi:ss')</value>
+						</option>
+					</options>
+				</sqlpart>
+				
+			</sqlparts>
+			<vars>	
+				<var>
+					<argName>subject</argName>
+					<type>1</type>
+					<prefix>%</prefix>
+					<suffix>%</suffix>
+				</var>
+				<var>
+					<argName>createTime</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix></suffix>
+				</var>
+				<var>
+					<argName>createTime1</argName>
+					<type>1</type>
+					<prefix></prefix>
+					<suffix> 23:59:59</suffix>
+				</var>
+				
+			</vars>
+		</dataset>
+	</datasets>
+</webpage>

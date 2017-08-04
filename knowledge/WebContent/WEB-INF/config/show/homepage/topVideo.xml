@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webpage>
+	<code>topVideo</code>
+	<url>/homepage/topVideo</url>
+	<!--热门视频 -->
+	<datasets>
+		<dataset>
+			<name>ds1</name>
+			<!-- 1SQL检索，2存储过程，3Text文件，4Xml文件，5Rolap,6 solr,7json文件 -->
+			<type>1</type>
+			<!-- 1单条，2前几条，3分页显示，4全部 -->
+			<scope>4</scope>
+			<pageSize></pageSize>
+			<sql><![CDATA[
+				select * from (
+		             select t.* from (
+		               select * from 
+		                    (select vl.id,vl.vid_id,vl.subject,vl.covre,vl.STATUS_TIME,vl.if_login as if_login,vl.organizer_token,vl.start_time,vl.end_time,nvl(vl.serial_number,10000000)as serial_number,'1' as flag 
+		                 from 
+		               	vms_live_info vl 
+		                 	where vl.if_status='2' and vl.end_time > sysdate  and vl.if_del='1' and vl.opended='true' 
+		                       order by vl.serial_number asc,vl.STATUS_TIME desc) t1
+		               union
+		               select * from
+		                    (select vc.id,vc.vid_id,vc.name,vc.cover,vc.UP_TIME,vc.if_login,'' as organizer_token,null  as start_time,null  as end_time,nvl(vc.serial_number,10000000)as serial_number,'2' as flag 
+		                    from
+		                    vms_cast_info vc 
+		                   where vc.IF_SHELVES='1' and  vc.if_del='1'
+		                      order by vc.serial_number asc,vc.UP_TIME desc)t2
+		        	)t  order by t.flag asc,t.serial_number asc,t.start_time,t.STATUS_TIME desc
+		      	) where rownum<8
+			]]>
+			</sql>
+		</dataset>
+	</datasets>
+</webpage>
