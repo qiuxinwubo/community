@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mail>
-	 <email>smebj@bjsidic.com</email><!-- 系统邮箱地址(如:service@126.com) -->
-	 <email-pwd>qwert@123</email-pwd> <!-- 系统邮箱密码(如:123456) 密码中最好不要出现 < > & ' " 这些字符,以免出现数据解析异常!-->
-	 <email-server>mail.bjsidic.com</email-server> <!-- 邮件发送服务(如:smtp.126.com) -->
-</mail>

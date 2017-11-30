@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<web_app>
-	<systemName></systemName>
-	<attachPath>D:/file</attachPath>
-	<mdbPath>D:/attendance/mdb/</mdbPath>
-	<showXmlDir>/WEB-INF/config/show/</showXmlDir>
-	<dicFilename>/WEB-INF/config/dictionary.xml</dicFilename>
-</web_app>
